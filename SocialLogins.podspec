@@ -10,13 +10,6 @@ Pod::Spec.new do |s|
   s.name             = 'SocialLogins'
   s.version          = '0.1.3'
   s.summary          = 'SocialLogins makes integration easier.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
 This package collects famous login providers such as Apple, Google for easy integration.
                        DESC
@@ -26,19 +19,12 @@ This package collects famous login providers such as Apple, Google for easy inte
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'eneskaraosman' => 'eneskaraosman53@gmail.com' }
   s.source           = { :git => 'https://github.com/eneskaraosman/SocialLogins.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.swift_version    = '5.0'
   s.ios.deployment_target = '13.0'
   s.platform = :ios, '13.0'
   s.static_framework = true
-  s.source_files = 'SocialLogins/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SocialLogins' => ['SocialLogins/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'GoogleSignIn'
+  s.source_files = 'SocialLogins/Classes/**/*.swift'
+  s.exclude_files = 'SocialLogins/*.plist'
+  s.dependency 'GoogleSignIn'
 end
