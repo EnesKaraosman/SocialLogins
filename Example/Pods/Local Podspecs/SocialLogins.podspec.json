@@ -1,0 +1,30 @@
+{
+  "name": "SocialLogins",
+  "version": "0.1.0",
+  "summary": "A short description of SocialLogins.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/eneskaraosman/SocialLogins",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "eneskaraosman": "eneskaraosman53@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/eneskaraosman/SocialLogins.git",
+    "tag": "0.1.0"
+  },
+  "swift_versions": "5.0",
+  "platforms": {
+    "ios": "13.0"
+  },
+  "static_framework": true,
+  "source_files": "SocialLogins/Classes/**/*",
+  "dependencies": {
+    "GoogleSignIn": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}

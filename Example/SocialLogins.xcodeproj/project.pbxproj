@@ -42,10 +42,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		60F87D51C74D29E7589364EC /* Pods-SocialLogins_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLogins_Example.release.xcconfig"; path = "Target Support Files/Pods-SocialLogins_Example/Pods-SocialLogins_Example.release.xcconfig"; sourceTree = "<group>"; };
 		96C5A2FA1EA1667B9BA4F723 /* Pods_SocialLogins_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLogins_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B73F83251DCFA7602DA6399 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B23F29D8B86BF2E5A5E8DC39 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		9B73F83251DCFA7602DA6399 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B23F29D8B86BF2E5A5E8DC39 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC2CFF0E020AB99FF5BBCF88 /* Pods-SocialLogins_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLogins_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SocialLogins_Tests/Pods-SocialLogins_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		ECA5F82CDEE1A93F3D5DBC29 /* SocialLogins.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SocialLogins.podspec; path = ../SocialLogins.podspec; sourceTree = "<group>"; };
+		ECA5F82CDEE1A93F3D5DBC29 /* SocialLogins.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SocialLogins.podspec; path = ../SocialLogins.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EE55AB00A81261A2DB8072E0 /* Pods-SocialLogins_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLogins_Tests.release.xcconfig"; path = "Target Support Files/Pods-SocialLogins_Tests/Pods-SocialLogins_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,6 @@
 				CC2CFF0E020AB99FF5BBCF88 /* Pods-SocialLogins_Tests.debug.xcconfig */,
 				EE55AB00A81261A2DB8072E0 /* Pods-SocialLogins_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -172,6 +171,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				A77EEF5FD44BDF8AACFBB29D /* [CP] Embed Pods Frameworks */,
+				7D53403F5A3A948D6E735DA6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,10 +213,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MHJ8EWL6NT;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = MHJ8EWL6NT;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +229,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -262,6 +265,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7D53403F5A3A948D6E735DA6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SocialLogins_Example/Pods-SocialLogins_Example-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SocialLogins_Example/Pods-SocialLogins_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A77EEF5FD44BDF8AACFBB29D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,11 +290,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SocialLogins_Example/Pods-SocialLogins_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SocialLogins/SocialLogins.framework",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocialLogins.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -478,6 +503,7 @@
 			baseConfigurationReference = 516B633E00AAD790B1EF6502 /* Pods-SocialLogins_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MHJ8EWL6NT;
 				INFOPLIST_FILE = SocialLogins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -493,6 +519,7 @@
 			baseConfigurationReference = 60F87D51C74D29E7589364EC /* Pods-SocialLogins_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MHJ8EWL6NT;
 				INFOPLIST_FILE = SocialLogins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC2CFF0E020AB99FF5BBCF88 /* Pods-SocialLogins_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = MHJ8EWL6NT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +557,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE55AB00A81261A2DB8072E0 /* Pods-SocialLogins_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = MHJ8EWL6NT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
