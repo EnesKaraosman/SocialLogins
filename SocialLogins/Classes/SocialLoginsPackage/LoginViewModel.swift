@@ -1,6 +1,5 @@
 //
 //  LoginViewModel.swift
-//  
 //
 //  Created by Enes Karaosman on 18.11.2020.
 //
@@ -15,8 +14,16 @@ open class LoginViewModel: ObservableObject {
         case google
     }
     
-    public lazy var appleSignInCoordinator = AppleSignInCoordinator(loginVM: self)
-    public lazy var googleSignInCoordinator = GoogleSignInCoordinator(loginVM: self)
+    private lazy var appleSignInCoordinator = AppleSignInCoordinator(loginVM: self)
+    private lazy var googleSignInCoordinator = GoogleSignInCoordinator(loginVM: self)
+    
+    private var currentSignInCoordinator: LoginCoordinatorProtocol {
+        switch selectedSignInMethod {
+        case .apple: return appleSignInCoordinator
+        case .google: return googleSignInCoordinator
+        case .none: fatalError("SignIn Method not selected")
+        }
+    }
     
     @Published public var signInSucceeded = false
     @Published public var signInError: Error?
@@ -27,7 +34,6 @@ open class LoginViewModel: ObservableObject {
     public var signInPublisher = PassthroughSubject<AuthResult, Error>()
     
     public init() {
-        print("Base.LoginViewModel init")
         signInPublisher
             .receive(on: DispatchQueue.main)
             .sink { (completion) in
@@ -38,7 +44,6 @@ open class LoginViewModel: ObservableObject {
                 case .finished: break // No action needed, receiveValue handles.
                 }
             } receiveValue: { (result) in
-                print("Base.Init receiveValue (signInPublisher)")
                 self.completeSignIn(with: result)
             }
             .store(in: &cancelable)
@@ -55,22 +60,15 @@ open class LoginViewModel: ObservableObject {
     /// Trigger this method (from related provider's button action) to start process.
     open func startSignInProcess(with method: SignInMethod) {
         switch method {
-        case .apple:
-            selectedSignInMethod = .apple
-            appleSignInCoordinator.triggerSignIn()
-        case .google:
-            selectedSignInMethod = .google
-            googleSignInCoordinator.triggerSignIn()
+        case .apple: selectedSignInMethod = .apple
+        case .google: selectedSignInMethod = .google
         }
+        currentSignInCoordinator.triggerSignIn()
     }
     
     open func logout() {
         signInSucceeded = false
-        switch selectedSignInMethod {
-        case .apple: appleSignInCoordinator.logout()
-        case .google: googleSignInCoordinator.logout()
-        case .none: break
-        }
+        currentSignInCoordinator.logout()
     }
     
 }

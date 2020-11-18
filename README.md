@@ -19,6 +19,91 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'SocialLogins'
 ```
+## Usage
+
+### Before performing sign in actions, make sure  you set following;
+
+* Google
+https://developers.google.com/identity/sign-in/ios/start-integrating
+Set in `AppDelegate.didFinishLaunchingWithOptions`
+1) GIDSignIn.sharedInstance()?.clientID
+2) Handle url in AppDelegate.application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+)
+3) Make sure to add URL scheme, TARGETS > Info > URL Types > + (Add)
+
+### Available Sign In Methods
+
+* Apple
+* Google
+
+You can create your own LoginViewModel <br>
+
+```swift
+import SocialLogins
+import FirebaseAuth // Imagine we'll send provided info to Firebase
+
+class MyLoginViewModel: SocialLogins.LoginViewModel {
+    
+    override init() {
+        super.init()
+    }
+    
+    override func completeSignIn(with authResult: SocialLogins.AuthResult) {
+        super.completeSignIn(with: authResult)
+        
+        // Here you may send credentials to different backend, instead Firebase.
+        func signInToFirebase(with credential: AuthCredential) {
+            Auth.auth().signIn(with: credential) { (result, error) in
+                if let user = result?.user {
+                    print("**** \(self.selectedSignInMethod.rawValue) sign in succeeded")
+                    self.signInSucceeded = true
+                }
+            }
+        }
+        
+        switch selectedSignInMethod {
+        case .apple:
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: authResult.idToken!,
+                rawNonce: authResult.rawNonce
+            )
+            signInToFirebase(with: credential)
+        case .google:
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: authResult.idToken!,
+                accessToken: authResult.accessToken!
+            )
+            signInToFirebase(with: credential)
+        case .none: break
+        }
+    }
+    
+}
+```
+And create your UI elements (buttons), when they tapped, just trigger related provider;
+
+Just trigger `LoginViewModel.startSignInProcess(with: SignInMethod)`
+
+```swift
+AppleSignInButton()
+    .frame(height: 50)
+    .border(Color.black, width: 1)
+    .padding()
+    .onTapGesture{ loginViewModel.startSignInProcess(with: .apple) }
+    
+GoogleSignInButton {
+    loginViewModel.startSignInProcess(with: .google)
+}
+.frame(height: 50)
+.border(Color.black, width: 1)
+.background(Color.white)
+.padding()
+```
+
 
 ## Author
 
