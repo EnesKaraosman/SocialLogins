@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SocialLogins_Example' do
+  pod 'SocialLogins', :path => '../'
+
+  target 'SocialLogins_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
