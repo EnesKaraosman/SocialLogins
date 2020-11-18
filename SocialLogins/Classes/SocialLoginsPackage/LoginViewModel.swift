@@ -23,7 +23,7 @@ open class LoginViewModel: ObservableObject {
     
     public var selectedSignInMethod: SignInMethod!
     
-    open var cancelable = Set<AnyCancellable>()
+    private var cancelable = Set<AnyCancellable>()
     public var signInPublisher = PassthroughSubject<AuthResult, Error>()
     
     public init() {
@@ -66,6 +66,11 @@ open class LoginViewModel: ObservableObject {
     
     open func logout() {
         signInSucceeded = false
+        switch selectedSignInMethod {
+        case .apple: appleSignInCoordinator.logout()
+        case .google: googleSignInCoordinator.logout()
+        case .none: break
+        }
     }
     
 }
