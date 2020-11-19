@@ -27,6 +27,7 @@ This package collects famous login providers such as Apple, Google for easy inte
   s.source_files = 'SocialLogins/Classes/**/*.swift'
   s.exclude_files = 'SocialLogins/*.plist'
   s.dependency 'GoogleSignIn'
+  s.dependency 'FBSDKLoginKit'
   
   s.pod_target_xcconfig = {
       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
