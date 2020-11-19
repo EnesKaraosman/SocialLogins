@@ -23,21 +23,32 @@ pod 'SocialLogins'
 
 ### Before performing sign in actions, make sure  you set following;
 
-* Google
-https://developers.google.com/identity/sign-in/ios/start-integrating
+* Apple <br>
+Enable Sign in with Apple from Project's settings, Signing & Capabilities
+
+* Google <br>
+[Google Login SDK integration](https://developers.google.com/identity/sign-in/ios/start-integrating)
+
 Set in `AppDelegate.didFinishLaunchingWithOptions`
 1) GIDSignIn.sharedInstance()?.clientID
-2) Handle url in AppDelegate.application(
+2) Handle url in `AppDelegate.application(
     _ app: UIApplication,
     open url: URL,
     options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-)
+)`
 3) Make sure to add URL scheme, TARGETS > Info > URL Types > + (Add)
+
+* Facebook <br>
+[Facebook Login SDK integration](https://developers.facebook.com/docs/facebook-login/ios/)
+Make sure to follow link; <br>
+You'll need to create an app from facebook developer & communicate with your project.
+Like settings AppDelegate methods & modifying Info.plist & URL Scheme
 
 ### Available Sign In Methods
 
 * Apple
 * Google
+* Facebook
 
 You can create your own LoginViewModel <br>
 
@@ -78,6 +89,11 @@ class MyLoginViewModel: SocialLogins.LoginViewModel {
                 accessToken: authResult.accessToken!
             )
             signInToFirebase(with: credential)
+        case .facebook:
+            let credential = FacebookAuthProvider.credential(
+                withAccessToken: authResult.accessToken!
+            )
+            signInToFirebase(with: credential)
         case .none: break
         }
     }
@@ -95,13 +111,19 @@ AppleSignInButton()
     .padding()
     .onTapGesture{ loginViewModel.startSignInProcess(with: .apple) }
     
-GoogleSignInButton {
-    loginViewModel.startSignInProcess(with: .google)
-}
-.frame(height: 50)
-.border(Color.black, width: 1)
-.background(Color.white)
-.padding()
+// Any button that might contain Google's logo and some text
+GoogleSignInButton() 
+    .frame(height: 50)
+    .border(Color.black, width: 1)
+    .padding()
+    .onTapGesture { loginViewModel.startSignInProcess(with: .google) }
+
+// Any button that might contain Facebook's logo and some text
+FacebookSignInButton()
+    .frame(height: 50)
+    .border(Color.black, width: 1)
+    .padding()
+    .onTapGesture{ loginViewModel.startSignInProcess(with: .facebook) }
 ```
 
 

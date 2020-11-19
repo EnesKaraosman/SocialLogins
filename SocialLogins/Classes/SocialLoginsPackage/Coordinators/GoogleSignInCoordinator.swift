@@ -20,7 +20,7 @@ import GoogleSignIn
  3) Make sure to add URL scheme, TARGETS > Info > URL Types > + (Add)
  */
 
-public class GoogleSignInCoordinator: NSObject {
+internal class GoogleSignInCoordinator: NSObject {
 
     private var loginViewModel: LoginViewModel
 
@@ -32,7 +32,7 @@ public class GoogleSignInCoordinator: NSObject {
 
 extension GoogleSignInCoordinator: GIDSignInDelegate {
     
-    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             loginViewModel.signInPublisher.send(completion: .failure(error))
             return
@@ -43,7 +43,7 @@ extension GoogleSignInCoordinator: GIDSignInDelegate {
         )
     }
     
-    public func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         loginViewModel.signInPublisher.send(completion: .failure(error))
     }
     
@@ -51,13 +51,13 @@ extension GoogleSignInCoordinator: GIDSignInDelegate {
 
 extension GoogleSignInCoordinator: LoginCoordinatorProtocol {
     
-    public func triggerSignIn() {
+    func triggerSignIn() {
         GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.signIn()
     }
     
-    public func logout() {
+    func logout() {
         GIDSignIn.sharedInstance()?.signOut()
     }
     

@@ -9,7 +9,7 @@ import Foundation
 import FBSDKLoginKit
 
 // https://developers.facebook.com/docs/facebook-login/ios/
-public class FacebookSignInCoordinator: NSObject {
+internal class FacebookSignInCoordinator: NSObject {
     
     enum FacebookLoginError: Error, LocalizedError {
         case unableToGetAccessToken
@@ -34,7 +34,7 @@ public class FacebookSignInCoordinator: NSObject {
 
 extension FacebookSignInCoordinator: LoginCoordinatorProtocol {
     
-    public func triggerSignIn() {
+    func triggerSignIn() {
         
         loginManager.logIn(
             permissions: ["public_profile", "email"],
@@ -55,7 +55,7 @@ extension FacebookSignInCoordinator: LoginCoordinatorProtocol {
         }
     }
     
-    public func logout() {
+    func logout() {
         loginManager.logOut()
     }
     

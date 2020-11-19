@@ -77,7 +77,7 @@ extension AppleSignInCoordinator: ASAuthorizationControllerDelegate {
 
 extension AppleSignInCoordinator: LoginCoordinatorProtocol {
     
-    public func triggerSignIn() {
+    func triggerSignIn() {
         
         let request = createAppleIDRequest()
         
@@ -87,7 +87,7 @@ extension AppleSignInCoordinator: LoginCoordinatorProtocol {
         authorizationController.performRequests()
     }
     
-    public func logout() {
+    func logout() {
         #warning("AppleSignInCoordinator.logout()")
     }
     
