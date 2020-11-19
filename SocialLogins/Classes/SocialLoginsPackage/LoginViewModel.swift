@@ -12,15 +12,18 @@ open class LoginViewModel: ObservableObject {
     public enum SignInMethod: String, CaseIterable {
         case apple
         case google
+        case facebook
     }
     
     private lazy var appleSignInCoordinator = AppleSignInCoordinator(loginVM: self)
     private lazy var googleSignInCoordinator = GoogleSignInCoordinator(loginVM: self)
+    private lazy var facebookSignInCoordinator = FacebookSignInCoordinator(loginVM: self)
     
     private var currentSignInCoordinator: LoginCoordinatorProtocol {
         switch selectedSignInMethod {
         case .apple: return appleSignInCoordinator
         case .google: return googleSignInCoordinator
+        case .facebook: return facebookSignInCoordinator
         case .none: fatalError("SignIn Method not selected")
         }
     }
@@ -62,6 +65,7 @@ open class LoginViewModel: ObservableObject {
         switch method {
         case .apple: selectedSignInMethod = .apple
         case .google: selectedSignInMethod = .google
+        case .facebook: selectedSignInMethod = .facebook
         }
         currentSignInCoordinator.triggerSignIn()
     }
