@@ -23,26 +23,63 @@ pod 'SocialLogins'
 
 ### Before performing sign in actions, make sure  you set following;
 
+**Note: Use SocialLogins shared instance in AppDelegate & SceneDelegate**
+
+Set in `AppDelegate.swift`
+```swift
+func application(
+    _ application: UIApplication, 
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {
+
+    // Required if you're using GoogleSignIn, otherwise no need to call.
+    SocialLogins.shared.configure(clientID: "")
+    let _ = SocialLogins.shared.application(
+        application,
+        didFinishLaunchingWithOptions: launchOptions
+    )
+    
+}
+
+func application(
+    _ app: UIApplication, 
+    open url: URL, 
+    options: [UIApplicationOpenURLOptionsKey : Any] = [:]
+) -> Bool {
+    return SocialLogins.shared.application(
+        app,
+        open: url,
+        options: options
+    )
+}
+```
+
+Set in `SceneDelegate.swift` (if SceneDelegate exist, otherwise no need to create)
+```swift
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    
+    SocialLogins.shared.scene(
+        scene,
+        openURLContexts: openURLContexts
+    )
+}
+```
+
+If you implement methods above, no need to re implement them while following Google & Facebook instructions. (Just configure URL Schemes & Info.plist) <br>
+
 * Apple <br>
 Enable Sign in with Apple from Project's settings, Signing & Capabilities
 
 * Google <br>
 [Google Login SDK integration](https://developers.google.com/identity/sign-in/ios/start-integrating)
 
-Set in `AppDelegate.didFinishLaunchingWithOptions`
-1) GIDSignIn.sharedInstance()?.clientID
-2) Handle url in `AppDelegate.application(
-    _ app: UIApplication,
-    open url: URL,
-    options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-)`
-3) Make sure to add URL scheme, TARGETS > Info > URL Types > + (Add)
+- Make sure to add URL scheme, TARGETS > Info > URL Types > + (Add)
 
 * Facebook <br>
 [Facebook Login SDK integration](https://developers.facebook.com/docs/facebook-login/ios/)
 Make sure to follow link; <br>
 You'll need to create an app from facebook developer & communicate with your project.
-Like settings AppDelegate methods & modifying Info.plist & URL Scheme
+Modify Info.plist & URL Scheme
 
 ### Available Sign In Methods
 
