@@ -471,7 +471,7 @@
 		F47660E34149B36BBF187B3C8D225952 /* FBSDKFeatureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE7C618D4DE50CCE8471F30DB112AEF /* FBSDKFeatureManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F47BF5598DBEDEB0A44679023AFC7E66 /* OIDIDToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B9636687385B0CEA402710E4623157 /* OIDIDToken.m */; };
 		F4AA0307707A81E18E3EBFC87CE0BEF7 /* FBSDKKeychainStoreViaBundleID.h in Headers */ = {isa = PBXBuildFile; fileRef = 37C493E65B532DA8ED4B4813AD764F4D /* FBSDKKeychainStoreViaBundleID.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		F4FFABB8256B7953007C58B4 /* SocialLogins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFABB7256B7953007C58B4 /* SocialLogins.swift */; };
+		F4FFAC05256B94A2007C58B4 /* SocialLogins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFAC04256B94A2007C58B4 /* SocialLogins.swift */; };
 		F598CB205564B44BC8BC6B774DEB1B62 /* OIDExternalUserAgentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 109BB04CEFD743389F441770FA9BD08D /* OIDExternalUserAgentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5F4BBA5DD590E8551724329EC8AADFF /* FBSDKErrorRecoveryAttempter.h in Headers */ = {isa = PBXBuildFile; fileRef = 606A9B007FC7EC07CFA198317BEF2436 /* FBSDKErrorRecoveryAttempter.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F63C85CE50933EE6BDB86F9C87253F1C /* OIDEndSessionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 844C168C3178C2BB253FD4CE0230CC31 /* OIDEndSessionResponse.m */; };
@@ -1108,7 +1108,7 @@
 		F259B6FBCD9EC0D41DCD960FD7CA8579 /* OIDEndSessionResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDEndSessionResponse.h; path = Source/AppAuthCore/OIDEndSessionResponse.h; sourceTree = "<group>"; };
 		F31E4A2CCE7E8F7CDB8B99EC0E3E8644 /* AppAuth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AppAuth.modulemap; sourceTree = "<group>"; };
 		F4BCE23B52CD0E170871B184C8FCC6A9 /* FBSDKViewImpressionTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKViewImpressionTracker.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.h; sourceTree = "<group>"; };
-		F4FFABB7256B7953007C58B4 /* SocialLogins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLogins.swift; sourceTree = "<group>"; };
+		F4FFAC04256B94A2007C58B4 /* SocialLogins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialLogins.swift; path = SocialLogins/Classes/SocialLoginsPackage/SocialLogins.swift; sourceTree = "<group>"; };
 		F5FD7BB9FFA24FC4911C258B9E0DDAA4 /* FBSDKLoginManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginManager.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManager.m; sourceTree = "<group>"; };
 		F6463423156460F6E9C16F7FCD092327 /* FBSDKEventDeactivationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKEventDeactivationManager.m; path = FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/EventDeactivation/FBSDKEventDeactivationManager.m; sourceTree = "<group>"; };
 		F6E66C89756C24DEFB456928A4C3B70B /* FBSDKGraphRequest+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKGraphRequest+Internal.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequest+Internal.h"; sourceTree = "<group>"; };
@@ -1944,7 +1944,7 @@
 		DEBCC567A5A8C238A339762794D4F5D1 /* SocialLogins */ = {
 			isa = PBXGroup;
 			children = (
-				F4FFABB7256B7953007C58B4 /* SocialLogins.swift */,
+				F4FFAC04256B94A2007C58B4 /* SocialLogins.swift */,
 				63383BD3CCC63355BD8F91E559B8ACC5 /* LoginViewModel.swift */,
 				B4BE174C462E68297FCFBCD51D9221E8 /* Coordinators */,
 				210C453A62822CDD887BEAE6E3857CCE /* Extensions */,
@@ -2624,7 +2624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FFABB8256B7953007C58B4 /* SocialLogins.swift in Sources */,
+				F4FFAC05256B94A2007C58B4 /* SocialLogins.swift in Sources */,
 				E476C704E47088073BF6790DB70A7C52 /* AppleSignInCoordinator.swift in Sources */,
 				ED973AE648F2BC7D597110758D9C9B9E /* AuthResult.swift in Sources */,
 				566F2B2033219E438F865667A3713694 /* FacebookSignInCoordinator.swift in Sources */,

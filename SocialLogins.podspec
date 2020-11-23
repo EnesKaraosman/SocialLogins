@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SocialLogins'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'SocialLogins makes integration easier.'
   s.description      = <<-DESC
 This package collects famous login providers such as Apple, Google for easy integration.
