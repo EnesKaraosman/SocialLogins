@@ -19,6 +19,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'SocialLogins'
 ```
+### Preview
+
+<img src="../master/socialLogins_readme.png" />
+
 ## Usage
 
 ### Before performing sign in actions, make sure  you set following;
