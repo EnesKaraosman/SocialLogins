@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SocialLogins'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'SocialLogins makes integration easier.'
   s.description      = <<-DESC
 This package collects famous login providers such as Apple, Google for easy integration.
@@ -26,8 +26,8 @@ This package collects famous login providers such as Apple, Google for easy inte
   s.static_framework = true
   s.source_files = 'SocialLogins/Classes/**/*.swift'
   s.exclude_files = 'SocialLogins/*.plist'
-  s.dependency 'GoogleSignIn'
-  s.dependency 'FBSDKLoginKit'
+  s.dependency 'GoogleSignIn', '5.0.2'
+  s.dependency 'FBSDKLoginKit', '8.2.0'
   
   s.pod_target_xcconfig = {
       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
